@@ -96,14 +96,12 @@ const plugin = async (args: IpluginInputArgs): Promise<IpluginOutputArgs> => {
     throw new Error('No streams mapped for new file');
   }
 
-  if (args.variables.ffmpegCommand.multiInputArguments.length > 0) {
-    // eslint-disable-next-line prefer-spread
-    cliArgs.push.apply(cliArgs, args.variables.ffmpegCommand.multiInputArguments);
+  if (args.variables.ffmpegCommand.multiInputArguments.length > 0)  {
+    cliArgs.push(...args.variables.ffmpegCommand.multiInputArguments);
     shouldProcess = true;
   }
-  if (args.variables.ffmpegCommand.multiOutputArguments.length > 0) {
-    // eslint-disable-next-line prefer-spread
-    cliArgs.push.apply(cliArgs, args.variables.ffmpegCommand.multiOutputArguments);
+  if (args.variables.ffmpegCommand.multiOutputArguments.length > 0)  {
+    cliArgs.push(...args.variables.ffmpegCommand.multiOutputArguments);
     shouldProcess = true;
   }
 
